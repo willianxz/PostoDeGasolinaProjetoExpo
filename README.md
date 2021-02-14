@@ -46,7 +46,7 @@ Postos
 |id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
 |int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
 
-Endpoints
+*Endpoint
 /api/cidade/id
 
 {
@@ -63,6 +63,7 @@ Endpoints
     }
 }
 
+*Endpoint
 /api/posto/id
 
 {

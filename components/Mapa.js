@@ -1,8 +1,7 @@
-
 //Coloca pontos customizados no mapa com imagem,titulo,descrição.
 import * as React from 'react';
 import MapView, { Marker, ProviderPropType } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Animated, PermissionsAndroid } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Dimensions, TouchableOpacity, Animated, PermissionsAndroid } from 'react-native';
 import postoFlagImg from '../assets/postoflag.png';
 
 
@@ -45,6 +44,7 @@ export default class Mapa extends React.Component {
         super(props);
     
         this.state = {
+          textInputSearch: "",
           region: {
             latitude: LATITUDE,
             longitude: LONGITUDE,
@@ -59,12 +59,14 @@ export default class Mapa extends React.Component {
       render() {
         return (
           <View style={styles.container}>
+            
             <MapView
               provider={this.props.provider}
               style={styles.map}
               initialRegion={this.state.region}
               onPress={this.onMapPress}
             >
+               
               {this.state.markers.map(marker => (
                 <Marker
                   title={marker.title}
@@ -75,6 +77,20 @@ export default class Mapa extends React.Component {
                 />
               ))}
             </MapView>
+
+            <View style={{
+               position: 'absolute',
+               top: 20,
+               backgroundColor: 'transparent',
+            }}>
+              <TextInput
+                   placeholder={" Buscar por cidade..."}
+                   style={{ width: 180, height: 40, borderColor: 'gray', backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1 }}
+                   onChangeText={(e) => {this.setState({textInputSearch: e.value})}}
+                   value={this.state.textInputSearch}
+                />              
+            </View>
+
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.bubble}
@@ -94,6 +110,16 @@ export default class Mapa extends React.Component {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'flex-end',
         alignItems: 'center',
+      },
+      inputContainer: {
+        flexDirection: 'row',
+        marginVertical: 20,
+        backgroundColor: 'red',
+      },
+      textInputSearch: {
+        top: 0,
+        width: 150,
+        height: 50,
       },
       map: {
         ...StyleSheet.absoluteFillObject,
@@ -120,4 +146,3 @@ export default class Mapa extends React.Component {
         backgroundColor: 'transparent',
       },
     });
-    

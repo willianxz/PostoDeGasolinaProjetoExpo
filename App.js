@@ -8,7 +8,7 @@ import ListarCidades from './components/ListarCidades';
 export default function App() {
   return (
     <View style={styles.container}>
-        <TestComponent />
+        <Mapa />
       <StatusBar style="auto" />
     </View>
   );
