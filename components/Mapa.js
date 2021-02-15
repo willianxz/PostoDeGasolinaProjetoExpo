@@ -14,7 +14,7 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let id = 0;
 
-
+//Objetos
 const marker1 = {
   key: "chave1",
   title: "Gas Station",
